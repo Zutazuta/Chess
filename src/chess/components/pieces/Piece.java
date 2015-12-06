@@ -1,9 +1,20 @@
 package chess.components.pieces;
 
-public abstract class Piece {
+public class Piece {
 	
-	public Piece[][] emptyBoard() {
-		return new Piece[8][8];
+	private String color;
+	private String type;
+    public Piece ( String color, String type)
+	{
+    	this.color = color;
+    	this.type = type;
 	}
-
+	
+    
+    public String getName()
+    {
+    	return color + " " + type;
+    	
+    }
+	
 }
