@@ -8,8 +8,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import chess.components.pieces.Piece;
-
 public class Board {
 
 	private JPanel boardFrame;

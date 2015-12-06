@@ -1,6 +1,8 @@
-package chess.components.pieces;
+package chess.components;
 
 import java.util.List;
+
+import chess.movement.Move;
 
 public class Piece {
 

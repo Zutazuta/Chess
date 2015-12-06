@@ -1,4 +1,4 @@
-package chess.components.pieces;
+package chess.movement;
 
 public class Move {
 
