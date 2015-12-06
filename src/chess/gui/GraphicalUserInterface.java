@@ -1,6 +1,7 @@
 package chess.gui;
 
 import java.awt.Dimension;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -21,7 +22,12 @@ public class GraphicalUserInterface {
                 Board board = new Board();
 
                 JFrame mainFrame = new JFrame();
-                mainFrame.add(board.drawBoard(null));
+                try {
+					mainFrame.add(board.drawBoard(null));
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 mainFrame.setLocationByPlatform(true);
                 mainFrame.pack();
