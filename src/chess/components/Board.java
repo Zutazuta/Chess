@@ -23,7 +23,7 @@ public class Board {
 
 		boardFrame.removeAll();
 		boardSquares = new JPanel[8][8];
-		
+
 		for (int i = 0; i < boardSquares.length; i++) {
 			for (int j = 0; j < boardSquares.length; j++) {
 				JPanel square = new JPanel();
@@ -48,72 +48,77 @@ public class Board {
 
 	private JLabel determinePiece(Piece piece) throws IOException {
 
-		switch (piece.getName()) {
-		case ("WHITE KING"):
-			JLabel wKing = new JLabel(new ImageIcon(ImageIO.read(new File("art/wKing.png"))));
-			wKing.setSize(new Dimension(64, 64));
-			return wKing;
+		if (piece.getPieceColor() == PieceColor.WHITE) {
+			switch (piece.getPieceType().name()) {
+			case ("KING"):
+				JLabel wKing = new JLabel(new ImageIcon(ImageIO.read(new File("art/wKing.png"))));
+				wKing.setSize(new Dimension(64, 64));
+				return wKing;
 
-		case ("WHITE QUEEN"):
-			JLabel wQueen = new JLabel(new ImageIcon(ImageIO.read(new File("art/wQueen.png"))));
-			wQueen.setSize(new Dimension(64, 64));
-			return wQueen;
+			case ("QUEEN"):
+				JLabel wQueen = new JLabel(new ImageIcon(ImageIO.read(new File("art/wQueen.png"))));
+				wQueen.setSize(new Dimension(64, 64));
+				return wQueen;
 
-		case ("WHITE BISHOP"):
-			JLabel wBishop = new JLabel(new ImageIcon(ImageIO.read(new File("art/wBishop.png"))));
-			wBishop.setSize(new Dimension(64, 64));
-			return wBishop;
+			case ("BISHOP"):
+				JLabel wBishop = new JLabel(new ImageIcon(ImageIO.read(new File("art/wBishop.png"))));
+				wBishop.setSize(new Dimension(64, 64));
+				return wBishop;
 
-		case ("WHITE KNIGHT"):
-			JLabel wKnight = new JLabel(new ImageIcon(ImageIO.read(new File("art/wKnight.png"))));
-			wKnight.setSize(new Dimension(64, 64));
-			return wKnight;
+			case ("KNIGHT"):
+				JLabel wKnight = new JLabel(new ImageIcon(ImageIO.read(new File("art/wKnight.png"))));
+				wKnight.setSize(new Dimension(64, 64));
+				return wKnight;
 
-		case ("WHITE ROOK"):
-			JLabel wRook = new JLabel(new ImageIcon(ImageIO.read(new File("art/wRook.png"))));
-			wRook.setSize(new Dimension(64, 64));
-			return wRook;
+			case ("ROOK"):
+				JLabel wRook = new JLabel(new ImageIcon(ImageIO.read(new File("art/wRook.png"))));
+				wRook.setSize(new Dimension(64, 64));
+				return wRook;
 
-		case ("WHITE PAWN"):
-			JLabel wPawn = new JLabel(new ImageIcon(ImageIO.read(new File("art/wPawn.png"))));
-			wPawn.setSize(new Dimension(64, 64));
-			return wPawn;
+			case ("PAWN"):
+				JLabel wPawn = new JLabel(new ImageIcon(ImageIO.read(new File("art/wPawn.png"))));
+				wPawn.setSize(new Dimension(64, 64));
+				return wPawn;
 
-		// Black Studs
-		case ("BLACK KING"):
-			JLabel bKing = new JLabel(new ImageIcon(ImageIO.read(new File("art/bKing.png"))));
-			bKing.setSize(new Dimension(64, 64));
-			return bKing;
+			default:
+				throw new IllegalArgumentException();
+			}
+		} else {
+			switch (piece.getPieceType().name()) {
+			case ("KING"):
+				JLabel bKing = new JLabel(new ImageIcon(ImageIO.read(new File("art/bKing.png"))));
+				bKing.setSize(new Dimension(64, 64));
+				return bKing;
 
-		case ("BLACK QUEEN"):
-			JLabel bQueen = new JLabel(new ImageIcon(ImageIO.read(new File("art/bQueen.png"))));
-			bQueen.setSize(new Dimension(64, 64));
-			return bQueen;
+			case ("QUEEN"):
+				JLabel bQueen = new JLabel(new ImageIcon(ImageIO.read(new File("art/bQueen.png"))));
+				bQueen.setSize(new Dimension(64, 64));
+				return bQueen;
 
-		case ("BLACK BISHOP"):
-			JLabel bBishop = new JLabel(new ImageIcon(ImageIO.read(new File("art/bBishop.png"))));
-			bBishop.setSize(new Dimension(64, 64));
-			return bBishop;
+			case ("BISHOP"):
+				JLabel bBishop = new JLabel(new ImageIcon(ImageIO.read(new File("art/bBishop.png"))));
+				bBishop.setSize(new Dimension(64, 64));
+				return bBishop;
 
-		case ("BLACK KNIGHT"):
-			JLabel bKnight = new JLabel(new ImageIcon(ImageIO.read(new File("art/bKnight.png"))));
-			bKnight.setSize(new Dimension(64, 64));
-			return bKnight;
+			case ("KNIGHT"):
+				JLabel bKnight = new JLabel(new ImageIcon(ImageIO.read(new File("art/bKnight.png"))));
+				bKnight.setSize(new Dimension(64, 64));
+				return bKnight;
 
-		case ("BLACK ROOK"):
-			JLabel bRook = new JLabel(new ImageIcon(ImageIO.read(new File("art/bRook.png"))));
-			bRook.setSize(new Dimension(64, 64));
-			return bRook;
+			case ("ROOK"):
+				JLabel bRook = new JLabel(new ImageIcon(ImageIO.read(new File("art/bRook.png"))));
+				bRook.setSize(new Dimension(64, 64));
+				return bRook;
 
-		case ("BLACK PAWN"):
-			JLabel bPawn = new JLabel(new ImageIcon(ImageIO.read(new File("art/bPawn.png"))));
-			bPawn.setSize(new Dimension(64, 64));
-			return bPawn;
+			case ("PAWN"):
+				JLabel bPawn = new JLabel(new ImageIcon(ImageIO.read(new File("art/bPawn.png"))));
+				bPawn.setSize(new Dimension(64, 64));
+				return bPawn;
 
-		default:
-			throw new IllegalArgumentException();
+			default:
+				throw new IllegalArgumentException();
 
+			}
 		}
-
 	}
 }

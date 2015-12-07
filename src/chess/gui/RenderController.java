@@ -14,19 +14,19 @@ public class RenderController {
 	private static final int SQUARE_LENGTH = 64;
 	private static final int BOARD_LENGTH = SQUARE_LENGTH * 8;
 	
-	public static JFrame drawGui(Board board, Piece[][] boardState) throws IOException {		
-		JFrame gui = new JFrame();
+	private JFrame gui;
+	
+	public void drawGui(Board board, Piece[][] boardState) throws IOException {		
+		gui = new JFrame();
 		gui.add(board.drawBoard(boardState));
 		gui.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		gui.setLocationByPlatform(true);
 		gui.pack();
 		gui.setMinimumSize(new Dimension(BOARD_LENGTH, BOARD_LENGTH));
 		gui.setVisible(true);
-		
-		return gui;
 	}
 	
-	public static void drawBoardState(JFrame gui, Board board, Piece[][] boardState) {
+	public void drawBoardState(Board board, Piece[][] boardState) {
 		Runnable runnable = new Runnable() {
 
 			@Override

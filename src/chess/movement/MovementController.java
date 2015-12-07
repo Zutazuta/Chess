@@ -1,56 +1,49 @@
 package chess.movement;
 
 import chess.components.Piece;
+import chess.components.PieceColor;
+import chess.components.PieceType;
 
 public class MovementController {
 	
-	private static final String BLACK = "BLACK";
-	private static final String WHITE = "WHITE";
-	private static final String KING = "KING";
-	private static final String QUEEN = "QUEEN";
-	private static final String KNIGHT = "KNIGHT";
-	private static final String BISHOP = "BISHOP";
-	private static final String ROOK = "ROOK";
-	private static final String PAWN = "PAWN";
-	
-	public static Piece[][] initialBoardState(Piece[][] boardState) {
-		Piece piece = new Piece(WHITE, ROOK);
+	public Piece[][] initialBoardState(Piece[][] boardState) {
+		Piece piece = new Piece(PieceColor.WHITE, PieceType.ROOK);
 		boardState[0][0] = piece;
 		boardState[0][7] = piece;
-		piece = new Piece(BLACK, ROOK);
+		piece = new Piece(PieceColor.BLACK, PieceType.ROOK);
 		boardState[7][0] = piece;
 		boardState[7][7] = piece;
 
-		piece = new Piece(WHITE, KING);
+		piece = new Piece(PieceColor.WHITE, PieceType.KING);
 		boardState[0][3] = piece;
-		piece = new Piece(BLACK, KING);
+		piece = new Piece(PieceColor.BLACK, PieceType.KING);
 		boardState[7][3] = piece;
 
-		piece = new Piece(WHITE, QUEEN);
+		piece = new Piece(PieceColor.WHITE, PieceType.QUEEN);
 		boardState[0][4] = piece;
-		piece = new Piece(BLACK, QUEEN);
+		piece = new Piece(PieceColor.BLACK, PieceType.QUEEN);
 		boardState[7][4] = piece;
 
-		piece = new Piece(WHITE, KNIGHT);
+		piece = new Piece(PieceColor.WHITE, PieceType.KNIGHT);
 		boardState[0][1] = piece;
 		boardState[0][6] = piece;
-		piece = new Piece(BLACK, KNIGHT);
+		piece = new Piece(PieceColor.BLACK, PieceType.KNIGHT);
 		boardState[7][1] = piece;
 		boardState[7][6] = piece;
 
-		piece = new Piece(WHITE, BISHOP);
+		piece = new Piece(PieceColor.WHITE, PieceType.BISHOP);
 		boardState[0][2] = piece;
 		boardState[0][5] = piece;
-		piece = new Piece(BLACK, BISHOP);
+		piece = new Piece(PieceColor.BLACK, PieceType.BISHOP);
 		boardState[7][2] = piece;
 		boardState[7][5] = piece;
 
-		piece = new Piece(WHITE, PAWN);
+		piece = new Piece(PieceColor.WHITE, PieceType.PAWN);
 		for (int i = 0; i < 8; i++) {
 			boardState[1][i] = piece;
 		}
 
-		piece = new Piece(BLACK, PAWN);
+		piece = new Piece(PieceColor.BLACK, PieceType.PAWN);
 		for (int i = 0; i < 8; i++) {
 			boardState[6][i] = piece;
 		}
@@ -58,23 +51,28 @@ public class MovementController {
 		return boardState;
 	}
 	
-	public static Piece[][] whiteTurn(Piece[][] boardState) {
+	public Piece[][] whiteTurn(Piece[][] boardState) {
 
-		Piece piece = new Piece(WHITE, PAWN);
-		for (int i = 0; i < 8; i++) {
-			boardState[2][i] = piece;
-		}
+		determineLegalBoardStates(boardState);
 		
 		return boardState;
 	}
 
-	public static Piece[][] blackTurn(Piece[][] boardState) {
+	public Piece[][] blackTurn(Piece[][] boardState) {
 
-		Piece peace = new Piece(BLACK, PAWN);
-		for (int i = 0; i < 8; i++) {
-			boardState[5][i] = peace;
-		}
 		
 		return boardState;
+	}
+	
+	private void determineLegalBoardStates(Piece[][] boardState) {
+		for(int i = 0; i < boardState.length; i++) {
+			for(int j = 0; j < boardState.length; j++) {
+				if(boardState[i][j] != null) {
+					if(boardState[i][j].getPieceType() == PieceType.KNIGHT) {
+						System.out.println("FOUND A KNIGHT AT " + i + " " + j);
+					}
+				}				
+			}
+		}
 	}
 }

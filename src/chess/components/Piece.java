@@ -6,17 +6,21 @@ import chess.movement.Move;
 
 public class Piece {
 
-	private String color;
-	private String type;
+	private PieceColor color;
+	private PieceType type;
 	
 	private List<Move> availableMoves;
 
-	public Piece(String color, String type) {
+	public Piece(PieceColor color, PieceType type) {
 		this.color = color;
 		this.type = type;
 	}
 
-	public String getName() {
-		return color + " " + type;
+	public PieceColor getPieceColor() {
+		return color;
+	}
+	
+	public PieceType getPieceType() {
+		return type;
 	}
 }
